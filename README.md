@@ -15,3 +15,8 @@
 1. git clone https://github.com/lanxing/douban_movie_scrapy.git
 2. 进入model模块，调用Model.py中的createTable函数创建本地数据库,注意修改db的username和password
 3. 执行scrapy crawl moviespider
+
+---
+#### 其他
+1. 示例只爬取豆瓣热门电影(https://movie.douban.com/explore#!type=movie&tag=%E7%83%AD%E9%97%A8&sort=recommend&page_limit=20&page_start=300),通过抓包会发现该页面点击更多时调用(https://movie.douban.com/j/search_subjects?page_start=0&tag=%E7%83%AD%E9%97%A8&sort=recommend&type=movie&page_limit=20)接口来获取电影列表
+2. 当拉取数据过于频繁时，豆瓣会对请求进行限制，重定向到一个验证请求不是机器人的页面，需要重新输入验证码，所以为了防止ip被限制，爬虫每分钟请求一次数据，一次请求20条
