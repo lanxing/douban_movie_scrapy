@@ -71,6 +71,8 @@ class MovieSpider(scrapy.Spider):
 
                 if response is not None and response.status_code == 200:
                     items = response.json()['subjects']
+                    if len(items) == 0:
+                        break
                     for item in items:
                         yield scrapy.Request(item.get('url'), callback=self.parse)
                 else:
