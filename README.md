@@ -18,5 +18,6 @@
 
 ---
 #### 其他
-1. 示例只爬取豆瓣热门电影(https://movie.douban.com/explore#!type=movie&tag=%E7%83%AD%E9%97%A8&sort=recommend&page_limit=20&page_start=300),通过抓包会发现该页面点击更多时调用(https://movie.douban.com/j/search_subjects?page_start=0&tag=%E7%83%AD%E9%97%A8&sort=recommend&type=movie&page_limit=20)接口来获取电影列表
-2. 当拉取数据过于频繁时，豆瓣会对请求进行限制，重定向到一个验证请求不是机器人的页面，需要重新输入验证码，所以为了防止ip被限制，爬虫每分钟请求一次数据，一次请求20条
+1. 示例只爬取豆瓣热门电影(https://movie.douban.com/explore#!type=movie&tag=%E7%83%AD%E9%97%A8&sort=recommend&page_limit=20&page_start=300)
+2. 通过抓包会发现该页面点击更多时调用(https://movie.douban.com/j/search_subjects?page_start=0&tag=%E7%83%AD%E9%97%A8&sort=recommend&type=movie&page_limit=20)接口来获取电影列表,因此只需要修改page_start即可获取电影列表。
+3. 当拉取数据过于频繁时，豆瓣会对请求进行限制，重定向到一个验证请求不是机器人的页面，需要重新输入验证码，所以为了防止ip被限制，爬虫每分钟请求一次数据，一次请求20条
