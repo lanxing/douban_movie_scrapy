@@ -64,28 +64,22 @@ class MovieSpider(scrapy.Spider):
 
     def start_requests(self):
         session = login()
-        tmpContinue = True
-        UserAgent = [
-            'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
-            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36']
-        agentInidex = 1
         while True:
             try:
                 self.params['page_start'] = self.pageStart * self.pageLimit
-                headers['User-Agent'] = UserAgent[1-agentInidex]
-                agentInidex = 1 - agentInidex
-                response = session.get(self.requestUrl, params=self.params, headers=headers)
+                response = session.get(self.requestUrl, params=self.params)
 
                 if response is not None and response.status_code == 200:
                     items = response.json()['subjects']
                     for item in items:
                         yield scrapy.Request(item.get('url'), callback=self.parse)
                 else:
+                    time.sleep(10)
                     continue
             except Exception:
                 pass
             self.pageStart += 1
-            time.sleep(90)
+            time.sleep(60)
 
         print('stop scrap')
 
