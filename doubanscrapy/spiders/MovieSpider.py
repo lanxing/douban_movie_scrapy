@@ -23,8 +23,8 @@ def login():
         # 'ck':'GiW5',
         'source': 'None',
         'redir': 'https://movie.douban.com/',
-        'form_email': 'gao__fan@126.com',
-        'form_password': 'gao910228',
+        'form_email': '***',
+        'form_password': '***',
         # 'captcha_solution':captcha_solution,
         # 'captcha_id':captcha_id,
         'login': login_str
